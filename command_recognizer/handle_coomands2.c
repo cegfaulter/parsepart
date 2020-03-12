@@ -38,5 +38,7 @@ t_clist     *all_commands(char *s, char **envs)
         append(&all, get_command_key_val(cmds[iter], global_env));
         iter++;
     }
+    free_split(&cmds);
+    clear_map(&global_env, free_vars);
     return (all);
 }

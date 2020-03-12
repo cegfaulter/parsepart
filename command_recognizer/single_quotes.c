@@ -25,9 +25,9 @@ char        *single_quotes(char *str, int *iter)
         print("Error!\n");
         return (NULL);
     }
-    len = 0;
     s = malloc(sizeof(char) * (len + 1));
-    while (str[*iter] != '\'' && str[*iter] != '\0')
+    len = 0;
+    while (str[*iter] != '\0' && str[*iter] != '\'')
     {
         s[len] = str[*iter];
         len++;

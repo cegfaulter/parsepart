@@ -72,4 +72,5 @@ char			*single_quotes(char *str, int *iter);
 void			free_keys_rec(void *k_v);
 void			free_ccommand(void *cmd);
 void			free_all_commands(t_clist **lst);
+void			free_vars(void *vars);
 #endif

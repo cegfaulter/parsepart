@@ -42,6 +42,7 @@ int         main(int argc, char **argv, char **var_env)
             iter++;
             print("\n\n");
         }
+        free_all_commands(&lst);
         lst = NULL;
         free(s);
     }

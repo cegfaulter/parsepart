@@ -33,6 +33,7 @@ void		free_keys_rec(void *k_v)
 	value = (t_rec *)key_value->value;
 	free(key);
 	free_rec(&value);
+	free(key_value);
 }
 
 void	 free_ccommand(void *cmd)
@@ -42,6 +43,16 @@ void	 free_ccommand(void *cmd)
 	command = (t_ccommand *)cmd;
 	free(command->keys);
 	clear_map(&command->full_command, free_keys_rec);
+}
+
+void	free_vars(void *vars)
+{
+	t_key_value	*k_v;
+
+     k_v = (t_key_value *)vars;
+	 free(k_v->key);
+	 free(k_v->value);
+	 free(k_v);
 }
 
 void	free_all_commands(t_clist **lst)
