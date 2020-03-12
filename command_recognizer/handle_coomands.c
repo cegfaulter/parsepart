@@ -111,7 +111,11 @@ t_rec       *handle_command(char *str, t_cmap *map, int *iter, int is_found)
         else if (!is_found && !is_file)
             break ;
         else if (!is_file)
+        {
+            if (s)
+                append(&rec->text, s);
             s = enter(str, iter, map);
+        }
     }
     if (s)
         append(&rec->text, s);
