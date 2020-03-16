@@ -87,38 +87,19 @@ t_rec       *handle_command(char *str, t_cmap *map, int *iter, int is_found)
     {
        if (str[*iter] == '>' || str[*iter] == '<')
        {
-           if (str[*iter] == '<' && s)
-                append(&rec->files, s);
-            else if (s)
-                append(&rec->text, s);
-            if (str[*iter] == '>')
-                is_file = 1;
-            s = NULL;
            get_oper(str, iter, &rec->oper);
+           is_file = 1;
        }
        else if (str[*iter] == ' ')
-       {
-           //if (s != NULL)
-            //    append(&rec->text, s);
-            //s = NULL;
             while (str[++(*iter)] == ' ');
-       }
         else if (is_file)
         {
-            append(&rec->files, enter(str, iter, map));
+            enter(str, iter, map,&rec->files);
             is_file = 0;
         }
-        else if (!is_found && !is_file)
-            break ;
-        else if (!is_file)
-        {
-            if (s)
-                append(&rec->text, s);
-            s = enter(str, iter, map);
-        }
+        else
+            enter(str, iter, map, &rec->text);
     }
-    if (s)
-        append(&rec->text, s);
     return (rec);
 }
 

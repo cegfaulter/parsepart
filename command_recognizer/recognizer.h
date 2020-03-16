@@ -57,7 +57,7 @@ char			*get(t_cmap *map, const char *key);
 void			setv(t_cmap *map, const char *key, char *value);
 t_rec			*get_cmd(t_cmap *map, char *key);
 void			set_cmd(t_cmap *map, char *key, t_rec *value);
-char			*enter(char  *str, int *iter, t_cmap *map);
+void			enter(char  *str, int *iter, t_cmap *map, t_clist **lst);
 void			get_oper(char *str, int *iter, t_clist **operator);
 t_cmap			*put_vars(char **vars);
 char			*single_double_quotes(char *str, int *iter, char c, t_cmap *map);

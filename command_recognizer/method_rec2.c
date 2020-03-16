@@ -34,7 +34,7 @@ int         main(int argc, char **argv, char **var_env)
             hi = (t_ccommand *)all->data;
             while (hi->keys)
             {
-                print("%s\n\n", (char *)hi->keys->data);
+                print("%s\n", (char *)hi->keys->data);
                 print_rec(get_cmd(hi->full_command, (char *)hi->keys->data));
                 hi->keys = hi->keys->next;
             }
@@ -43,7 +43,6 @@ int         main(int argc, char **argv, char **var_env)
             print("\n\n");
         }
         free_all_commands(&lst);
-        lst = NULL;
         free(s);
     }
     return (0);

@@ -12,12 +12,11 @@
 
 #include "recognizer.h"
 
-char        *enter(char  *str, int *iter, t_cmap *map)
+void        enter(char  *str, int *iter, t_cmap *map, t_clist **lst)
 {
     char       *s;
 
     s = NULL;
-
     while (str[*iter] && !in_set(str[*iter]," ><"))
     {
         if (str[*iter] == '\'' || str[*iter] == '"')
@@ -25,7 +24,7 @@ char        *enter(char  *str, int *iter, t_cmap *map)
         else
             s = ft_cstrjoin(s, withback(str, map, iter));
     }
-    return (s);
+    append(lst, s);
 }
 
 void        get_oper(char *str, int *iter, t_clist **operator)
