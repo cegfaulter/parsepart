@@ -97,6 +97,8 @@ t_rec       *handle_command(char *str, t_cmap *map, int *iter, int is_found)
             enter(str, iter, map,&rec->files);
             is_file = 0;
         }
+        else if (!is_found)
+            break;
         else
             enter(str, iter, map, &rec->text);
     }
@@ -111,6 +113,7 @@ void       add_command(char *cmd, t_cmap *mp, t_cmap *global_vars, t_clist **lst
     int     is_found;
 
     value = NULL;
+    key = NULL;
     is_found = 0;
     i = 0;
     while (cmd[i] == ' ')
@@ -124,6 +127,8 @@ void       add_command(char *cmd, t_cmap *mp, t_cmap *global_vars, t_clist **lst
         }
         value = join_rec(value, handle_command(cmd, global_vars, &i, is_found));
     }
+    if (!key)
+        key = "CREATE_FILE";
     set_cmd(mp, key, value);
     append(lst, key);
 }
